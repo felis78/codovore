@@ -2,9 +2,8 @@
   <v-layout class="rounded rounded-md">
     <HighBar/>
     <v-navigation-drawer>
-      <v-list>
-        <v-list-item title="Navigation drawer"></v-list-item>
-      </v-list>
+      <left-bar
+      @itemChoice="getChoice"/>
     </v-navigation-drawer>
 
     <v-main class="d-flex align-center justify-center" style="min-height: 300px;">
@@ -13,7 +12,19 @@
 </template>
 
 <script setup>
-  import HighBar from './components/HighBar.vue'
+  import {ref} from "vue";
+  import HighBar from '@/components/Nav/HighBar.vue';
+  import LeftBar from "@/components/Nav/LeftBar.vue";
+
+  const selected_item = ref(0)
+
+  const getChoice = (selectedValue) => {
+    selected_item.value= selectedValue
+  }
+
+
+
+
 </script>
 <style scoped>
 
