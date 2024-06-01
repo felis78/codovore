@@ -1,6 +1,6 @@
 <template>
     <v-app-bar
-      color="white"
+      color="whit"
       background-color="white"
       density="comfortable"
       height="50">

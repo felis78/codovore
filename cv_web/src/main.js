@@ -12,9 +12,8 @@ import App from './App.vue'
 
 // Composables
 import { createApp } from 'vue'
+import { plugin, defaultConfig } from '@formkit/vue'
+import config from '@/formkit.config'
+import '@formkit/themes/genesis'
 
-const app = createApp(App)
-
-registerPlugins(app)
-
-app.mount('#app')
+createApp(App).use(plugin, defaultConfig(config)).use(registerPlugins).mount('#app')
