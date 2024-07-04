@@ -1,0 +1,11 @@
+ CREATE USER 'codovore'@'localhost' IDENTIFIED WITH authentication_plugin BY 'z4526A';
+ GRANT PRIVILEGE ON database.table TO 'codovore'@'localhost';
+ FLUSH PRIVILEGES;
+ 
+ CREATE TABLE `users` (
+`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+`name` VARCHAR( 100 ) NOT NULL ,
+`email` VARCHAR( 100 ) NOT NULL ,
+`level` TINYINT NOT NULL,
+`password` VARCHAR( 100 ) NOT NULL
+)
