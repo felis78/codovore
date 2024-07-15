@@ -1,4 +1,5 @@
 #ignore Python environment
 venv/**
 __pycache__
+.venv/**
 

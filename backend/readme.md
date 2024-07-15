@@ -2,7 +2,7 @@
 
 ### Installer mariadb connector/C:
 ```
-$ sudo apt install wget
+$ sudo apt install python3-dev wget
 $ wget https://r.mariadb.com/downloads/mariadb_repo_setup
 $ chmod +x mariadb_repo_setup
 $ sudo ./mariadb_repo_setup \
@@ -16,7 +16,7 @@ $ sudo apt install libmariadb3 libmariadb-dev
 $ python3 -m venv .venv    
 ```
 
-### Installer les paquests pip:
+### Installer les paquets pip:
 
 ```
 $ pip install -r requirements.txt

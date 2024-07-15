@@ -8,4 +8,4 @@
 `email` VARCHAR( 100 ) NOT NULL ,
 `level` TINYINT NOT NULL,
 `password` VARCHAR( 100 ) NOT NULL
-)
+);
