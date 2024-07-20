@@ -93,9 +93,9 @@ def get_all_user(connection):
         
     
     
-def verify_user(connection, username, password_to_test):
+def verify_user(connection, email, password_to_test):
     cursor = connection.cursor()
-    cursor.execute("SELECT password FROM users WHERE name = %s", [username])
+    cursor.execute("SELECT password FROM users WHERE email = %s", [email])
     for (password) in cursor:
         if verify_password(password_to_test, password[0]):
             cursor.close()
@@ -103,19 +103,18 @@ def verify_user(connection, username, password_to_test):
         cursor.close()
         return False
     
-def deluser(connection, email):
-    try:
-        cursor = connection.cursor()
-        cursor.execute("DELETE FROM users WHERE email=%s", (email,))
-        cursor.commit()
-        cursor.close()
-        return True
+# def deluser(connection, email):
+#     try:
+#         cursor = connection.cursor()
+#         cursor.execute("DELETE FROM users WHERE email=%s", (email,))
+#         cursor.commit()
+#         cursor.close()
+#         return True
     
-    except mariadb.Error as e:
-        print(f"Error delete user from MariaDB Platform: {e}")
-        cursor.close()
-        return False
+#     except mariadb.Error as e:
+#         print(f"Error delete user from MariaDB Platform: {e}")
+#         cursor.close()
+#         return False
     
-connection = connect_mariadb()
-print(deluser(connection, "zero@bidule.com"))
+
     

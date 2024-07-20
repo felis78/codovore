@@ -7,7 +7,7 @@
     </v-navigation-drawer>
 
     <v-main class="d-flex align-center justify-center" style="min-height: 300px;">
-      <FullCV v-if="selected_item===1"/>
+      <SignIn v-if="selected_item===1"/>
       <formation v-if="selected_item===2"/>
       <DetailPosts v-if="selected_item===3"/>
       <contact v-if="selected_item===6"/>
@@ -24,6 +24,7 @@
   import Formation from "@/components/selected_Page/Formation.vue";
   import DetailPosts from "@/components/selected_Page/DetailPosts.vue";
   import FullCV from "@/components/selected_Page/FullCV.vue";
+  import SignIn from "./components/users/SignIn.vue";
 
 
 

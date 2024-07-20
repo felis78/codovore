@@ -41,12 +41,12 @@ def create_user():
 def check_password():
     try:
         datas = request.get_json()
-        username = datas['username']
+        email = datas['email']
         password_to_verify = datas['password']
         connection = connect_mariadb()
-        verify = verify_user(connection, username, password_to_verify)
+        verify = verify_user(connection, email, password_to_verify)
         if verify:
-            return jsonify({"message":f"User {username} with password {password_to_verify} accepted"}), 201
+            return jsonify({"message":f"User {email} with password {password_to_verify} accepted"}), 201
         return jsonify({"error": "Failed to verify user, bad username or password"}), 500
         
     except Exception as e:
