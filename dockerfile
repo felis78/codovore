@@ -1,35 +1,27 @@
-# Image de base Debian
-FROM ubuntu:jammy
+FROM debian:12-slim
 
-# Installer les utilitaires
-RUN apt-get update && apt-get install -y \
-    curl \
-    software-properties-common \
-    python3 \
-    python3-pip \
-    python3-wheel \
-    python3-dev \
-    python3-venv \
-    wget \
-    mariadb-client \
-    mariadb-server \
-    libmariadbclient-dev \
-    libmariadb-dev-compat \
-    libmariadb-dev \
-    libmariadb3
+RUN apt-get update && apt-get install -y locales && rm -rf /var/lib/apt/lists/* \
+	&& localedef -i fr_FR -c -f UTF-8 -A /usr/share/locale/locale.alias fr_FR.UTF-8
 
-# Ajout du dépôt MariaDB et installation de MariaDB
-RUN curl -sS https://downloads.mariadb.org/mariadb/repositories/debian/bullseye/mariadb-10.6/bullseye/mariadb_10.6.7-1_bullseye_amd64.deb | dpkg -i -E && \
-    apt-get install -fy
+ENV LANG fr_FR.utf8
 
-# Exposer le port 3306 pour MariaDB
-EXPOSE 3306
+RUN apt-get update && apt-get install -y openssh-server curl wget git
+RUN mkdir /var/run/sshd
+RUN echo 'root:Anapurna01' | chpasswd
+RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+RUN apt-get -y  install build-essential libssl-dev libffi-dev python3-dev\
+	&& apt-get install -y python3 python3-pip \
+	&& apt-get install -y python3-venv
+RUN curl -sL https://deb.nodesource.com/setup_18.x | bash
+RUN apt-get update && apt-get install nodejs
+RUN wget https://r.mariadb.com/downloads/mariadb_repo_setup \
+	&& chmod +x mariadb_repo_setup \
+	&& ./mariadb_repo_setup \
+	--mariadb-server-version="mariadb-11.5.1" \
+	&& apt-get install -y libmariadb3 libmariadb-dev
+RUN git config --global user.name "Guillaume ROUCHEUX" \
+	&& git config --global user.email guillaume.roucheux@gmail.com
 
-# Définir le répertoire de travail
-WORKDIR /app
+EXPOSE 22
 
-# Volume pour la persistance des données
-VOLUME [ "/backend"]
-
-# Commande par défaut pour démarrer le conteneur
-CMD ["python3", "-m", "venv", ".venv"]
+CMD ["/usr/sbin/sshd", "-D"]
