@@ -18,7 +18,7 @@
   </v-layout>
 </template>
 
-<script setup>
+<script setup lang="ts">
   import {ref} from "vue";
   import HighBar from '@/components/Nav/HighBar.vue';
   import LeftBar from "@/components/Nav/LeftBar.vue";
@@ -28,21 +28,17 @@
   import FullCV from "@/components/selected_Page/FullCV.vue";
   import SignIn from "./components/users/SignIn.vue";
 
-  const selected_item = ref(0)
-  const login = ref(false)
-  const getChoice = (selectedValue) => {
+  const selected_item = ref<number>(0)
+  const login = ref<boolean>(false)
+  const getChoice = (selectedValue:number) => {
     selected_item.value= selectedValue
     login.value = false
   }
 
-  const logging = (loging_value) => {
+  const logging = (loging_value: boolean) => {
     login.value = loging_value
     selected_item.value = 0
   }
-
-
-
-
 
 </script>
 

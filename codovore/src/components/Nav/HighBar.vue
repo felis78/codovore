@@ -17,11 +17,11 @@
           <v-btn> Sign In </v-btn>
     </v-app-bar>
 </template>
-<script setup>
+<script setup lang="ts">
 
-const emit= defineEmits(["login"]);
+const emit= defineEmits<{"login":[value: boolean]}>();
 
-function login(logging){
+function login(logging: boolean ){
   emit("login",logging);
 }
 

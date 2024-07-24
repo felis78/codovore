@@ -39,14 +39,14 @@
 </template>
 
 
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue';
 
-let visible = ref(false)
-let email = ref()
-let password = ref()
+let visible = ref<boolean>(false)
+let email = ref<string>()
+let password = ref<string>()
 
-async function send_login() {
+async function send_login(): Promise<any> {
   if (!email.value){
     alert("Email is required")
     return false
@@ -62,8 +62,8 @@ async function send_login() {
     return false
   }
 
-  let url="http://localhost:5000/check_password"
-  let response = await fetch(url, {
+  let url:string ="http://localhost:5000/check_password"
+  let response:Response = await fetch(url, {
     method: 'POST',
     body: JSON.stringify({email: email.value,
                                 password: password.value}),
@@ -72,7 +72,7 @@ async function send_login() {
     console.log(response.status)
   if (response.status === 200){
     alert("OK")
-    //using vuex for session managment
+    //using pinia for session managment
     return true
   }
   else {
@@ -82,7 +82,7 @@ async function send_login() {
 }
 
 //verify if email content @
-function verify_email(email) {
+function verify_email(email:string) {
     let character = /[@]/
     return email.search(character) !== -1;
 }

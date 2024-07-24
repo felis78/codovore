@@ -22,6 +22,9 @@ RUN wget https://r.mariadb.com/downloads/mariadb_repo_setup \
 RUN git config --global user.name "Guillaume ROUCHEUX" \
 	&& git config --global user.email guillaume.roucheux@gmail.com
 
-EXPOSE 22
+COPY codovore /root/datas
+COPY backend /root/datas
+
+EXPOSE 2222:22
 
 CMD ["/usr/sbin/sshd", "-D"]

@@ -1,14 +1,3 @@
-<script setup>
-import {ref, defineEmits,watchEffect} from "vue";
-
-const emit = defineEmits(["itemChoice"])
-
-function emitChoice(value){
-  emit("itemChoice", value);
-}
-
-</script>
-
 <template>
   <v-list>
     <v-divider></v-divider>
@@ -28,6 +17,17 @@ function emitChoice(value){
     <v-divider></v-divider>
   </v-list>
 </template>
+
+<script setup lang="ts">
+import {defineEmits} from "vue";
+
+const emit = defineEmits<{"itemChoice" : [type: number]}>();
+
+function emitChoice(value:number){
+  emit("itemChoice", value);
+}
+
+</script>
 
 <style scoped>
 
