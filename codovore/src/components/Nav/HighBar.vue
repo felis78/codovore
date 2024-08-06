@@ -8,9 +8,8 @@
       <template v-slot:prepend>
         <v-app-bar-nav-icon></v-app-bar-nav-icon>
       </template>
-          <v-app-bar-title
-            class="d-flex align-center justify-center"
-            text="Codovore.fr"></v-app-bar-title>
+
+          <BigTitle/>
           <v-spacer>
           </v-spacer>
           <v-btn @click="login(true)"> Login </v-btn>
@@ -18,6 +17,8 @@
     </v-app-bar>
 </template>
 <script setup lang="ts">
+
+import BigTitle from "@/components/Nav/BigTitle.vue";
 
 const emit= defineEmits<{"login":[value: boolean]}>();
 

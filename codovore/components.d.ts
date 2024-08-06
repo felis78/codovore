@@ -7,7 +7,20 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    AboutMe: typeof import('./src/components/selected_Page/AboutMe.vue')['default']
+    BigTitle: typeof import('./src/components/Nav/BigTitle.vue')['default']
+    Contact: typeof import('./src/components/selected_Page/Contact.vue')['default']
+    DetailPosts: typeof import('./src/components/selected_Page/DetailPosts.vue')['default']
+    DetailProjectsPro: typeof import('./src/components/selected_Page/DetailProjectsPro.vue')['default']
+    DetailProjetcsPerso: typeof import('./src/components/selected_Page/DetailProjetcsPerso.vue')['default']
+    Formation: typeof import('./src/components/selected_Page/Formation.vue')['default']
+    FullCV: typeof import('./src/components/selected_Page/FullCV.vue')['default']
+    HighBar: typeof import('./src/components/Nav/HighBar.vue')['default']
+    LeftBar: typeof import('./src/components/Nav/LeftBar.vue')['default']
+    MyImage: typeof import('./src/components/selected_Page/MyImage.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SignIn: typeof import('./src/components/users/SignIn.vue')['default']
+    SignUp: typeof import('./src/components/users/SignUp.vue')['default']
   }
 }

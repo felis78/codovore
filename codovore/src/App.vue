@@ -28,6 +28,7 @@
   import FullCV from "@/components/selected_Page/FullCV.vue";
   import SignIn from "./components/users/SignIn.vue";
 
+
   const selected_item = ref<number>(0)
   const login = ref<boolean>(false)
   const getChoice = (selectedValue:number) => {
